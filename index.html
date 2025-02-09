@@ -9,12 +9,15 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
+            background-color: #f0f0f0;
         }
         #calculator {
             display: inline-block;
             border: 1px solid #ccc;
             padding: 20px;
             border-radius: 10px;
+            background-color: #fff;
+            position: relative;
         }
         input, button {
             width: 50px;
@@ -27,6 +30,25 @@
             margin-top: 20px;
             font-size: 24px;
             color: #333;
+        }
+        .tear {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #00f;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fall 2s ease-in-out infinite;
+        }
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
         }
     </style>
 </head>
@@ -56,6 +78,9 @@
         <button onclick="appendToDisplay('/')">/</button>
         <br>
         <div id="result"></div>
+        <div class="tear" id="tear1" style="left: 30px;"></div>
+        <div class="tear" id="tear2" style="left: 70px; animation-delay: 0.5s;"></div>
+        <div class="tear" id="tear3" style="left: 110px; animation-delay: 1s;"></div>
     </div>
 
     <script>
@@ -66,6 +91,7 @@
         function clearDisplay() {
             document.getElementById('display').value = '';
             document.getElementById('result').innerText = '';
+            stopTears();
         }
 
         function calculateResult() {
@@ -73,12 +99,27 @@
             const funnyResponses = [
                 "Je sais pas, je me sens pas bien.",
                 "C'est pas le moment.",
-                "Je suis pas émotionnellement capable de répondre.",
-                "Je préfère pas en parler...",
+                "Peut-être... ou peut-être pas.",
+                "Maths? Jamais entendu parler.",
                 "Essaie encore, peut-être que ça marchera."
             ];
             const randomResponse = funnyResponses[Math.floor(Math.random() * funnyResponses.length)];
             document.getElementById('result').innerText = randomResponse;
+            startTears();
+        }
+
+        function startTears() {
+            const tears = document.querySelectorAll('.tear');
+            tears.forEach(tear => {
+                tear.style.animationPlayState = 'running';
+            });
+        }
+
+        function stopTears() {
+            const tears = document.querySelectorAll('.tear');
+            tears.forEach(tear => {
+                tear.style.animationPlayState = 'paused';
+            });
         }
     </script>
 </body>
