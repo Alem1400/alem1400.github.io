@@ -18,6 +18,7 @@
             border-radius: 10px;
             background-color: #fff;
             position: relative;
+            overflow: hidden; /* Ensure tears don't overflow the calculator */
         }
         input, button {
             width: 50px;
@@ -33,6 +34,7 @@
         }
         .tear {
             position: absolute;
+            top: 0; /* Start tears from the top */
             width: 10px;
             height: 10px;
             background-color: #00f;
@@ -47,7 +49,7 @@
             }
             100% {
                 opacity: 0;
-                transform: translateY(100px);
+                transform: translateY(200px); /* Adjust fall distance */
             }
         }
     </style>
