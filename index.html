@@ -10,22 +10,18 @@
             text-align: center;
             padding: 50px;
             background-color: #f0f0f0;
-            margin: 0;
         }
         #calculator {
             display: inline-block;
             border: 1px solid #ccc;
             padding: 20px;
             border-radius: 10px;
-            background-color: #fff;
+            background-color: #ffcccc; /* Rouge clair */
             position: relative;
             overflow: hidden;
-            width: 80%;
-            max-width: 400px;
-            margin: auto;
         }
         input, button {
-            width: calc(25% - 10px);
+            width: 50px;
             height: 50px;
             margin: 5px;
             font-size: 18px;
@@ -55,20 +51,6 @@
             100% {
                 opacity: 0;
                 transform: translateY(200px);
-            }
-        }
-        @media (max-width: 600px) {
-            #calculator {
-                width: 100%;
-                padding: 10px;
-            }
-            input, button {
-                width: calc(25% - 8px);
-                height: 40px;
-                font-size: 16px;
-            }
-            #result {
-                font-size: 20px;
             }
         }
     </style>
