@@ -84,14 +84,22 @@
     </div>
 
     <script>
+        let resultDisplayed = false;
+
         function appendToDisplay(value) {
-            document.getElementById('display').value += value;
+            const display = document.getElementById('display');
+            if (resultDisplayed) {
+                display.value = '';
+                resultDisplayed = false;
+            }
+            display.value += value;
         }
 
         function clearDisplay() {
             document.getElementById('display').value = '';
             document.getElementById('result').innerText = '';
             stopTears();
+            resultDisplayed = false;
         }
 
         function calculateResult() {
@@ -106,6 +114,7 @@
             const randomResponse = funnyResponses[Math.floor(Math.random() * funnyResponses.length)];
             document.getElementById('result').innerText = randomResponse;
             startTears();
+            resultDisplayed = true;
         }
 
         function startTears() {
